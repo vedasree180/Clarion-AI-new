@@ -1,0 +1,282 @@
+{
+  "deadlock": {
+    "difficulty": "medium",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "Deadlock is a state where a set of processes waits forever because each process is waiting for a resource held by another process in the same set.",
+        "weight": 2,
+        "keywords": ["deadlock", "indefinite waiting", "blocked processes"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "The four Coffman conditions are mutual exclusion, hold and wait, no preemption, and circular wait.",
+        "weight": 3,
+        "keywords": ["mutual exclusion", "hold and wait", "no preemption", "circular wait"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "Deadlock happens when resources are allocated in a way that forms a cyclic dependency graph among processes.",
+        "weight": 2,
+        "keywords": ["resource allocation graph", "cycle", "dependency"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Strict locking improves consistency but can increase deadlock risk and reduce system throughput.",
+        "weight": 1,
+        "keywords": ["throughput", "locking overhead", "consistency"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "A classic example is two transactions each holding one lock and waiting for the other lock.",
+        "weight": 1,
+        "keywords": ["database locks", "transaction deadlock", "two-phase locking"]
+      }
+    ]
+  },
+  "binary_search": {
+    "difficulty": "easy",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "Binary search finds a target by repeatedly dividing a sorted search space into halves.",
+        "weight": 2,
+        "keywords": ["binary search", "divide and conquer", "sorted input"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "Key components are low index, high index, mid index, and a comparison decision.",
+        "weight": 2,
+        "keywords": ["low", "high", "mid", "comparison"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "If target is less than mid element search left half, otherwise search right half, until found or range is empty.",
+        "weight": 2,
+        "keywords": ["left half", "right half", "range shrink"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Binary search is fast at O(log n) but requires sorted data and random access.",
+        "weight": 1,
+        "keywords": ["O(log n)", "sorted array", "random access"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Edge cases include duplicates, missing targets, and integer overflow when calculating midpoint in some languages.",
+        "weight": 1,
+        "keywords": ["duplicates", "not found", "mid overflow"]
+      }
+    ]
+  },
+  "recursion": {
+    "difficulty": "medium",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "Recursion is a technique where a function solves a problem by calling itself on smaller subproblems.",
+        "weight": 2,
+        "keywords": ["recursive function", "self call", "subproblem"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "A recursive solution needs a base case and a recursive case.",
+        "weight": 3,
+        "keywords": ["base case", "recursive case", "termination"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "Each call pushes a new frame to the call stack until base case, then unwinds and combines results.",
+        "weight": 2,
+        "keywords": ["call stack", "stack frame", "unwinding"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Recursion improves readability for divide-and-conquer problems but may add call overhead and stack overflow risk.",
+        "weight": 1,
+        "keywords": ["readability", "stack overflow", "overhead"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Examples include factorial, tree traversal, and Fibonacci where missing base case causes infinite recursion.",
+        "weight": 1,
+        "keywords": ["factorial", "tree traversal", "fibonacci"]
+      }
+    ]
+  },
+  "time_complexity": {
+    "difficulty": "medium",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "Time complexity describes how an algorithm's running time grows with input size using asymptotic notation.",
+        "weight": 2,
+        "keywords": ["time complexity", "input size", "asymptotic"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "Big-O, Omega, and Theta represent upper bound, lower bound, and tight bound of growth.",
+        "weight": 2,
+        "keywords": ["big o", "omega", "theta"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "Complexity is derived by counting dominant operations and ignoring constants and lower-order terms.",
+        "weight": 2,
+        "keywords": ["dominant term", "operation count", "simplification"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Asymptotic analysis helps compare algorithms but may hide real hardware constants and practical behavior.",
+        "weight": 1,
+        "keywords": ["theoretical", "practical performance", "constants"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Binary search is O(log n), merge sort is O(n log n), and nested loops are often O(n^2).",
+        "weight": 1,
+        "keywords": ["O(log n)", "O(n log n)", "O(n^2)"]
+      }
+    ]
+  },
+  "normalization": {
+    "difficulty": "hard",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "Normalization organizes relational tables to reduce redundancy and improve data integrity.",
+        "weight": 2,
+        "keywords": ["normalization", "redundancy", "integrity"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "Normal forms include 1NF, 2NF, 3NF, and BCNF based on dependency rules.",
+        "weight": 3,
+        "keywords": ["1NF", "2NF", "3NF", "BCNF", "functional dependency"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "Tables are decomposed so each non-key attribute depends on key, whole key, and nothing but the key.",
+        "weight": 2,
+        "keywords": ["decomposition", "partial dependency", "transitive dependency"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Normalization reduces anomalies but can increase joins and query complexity.",
+        "weight": 1,
+        "keywords": ["anomalies", "join overhead", "schema complexity"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Denormalization is sometimes used in analytics systems for faster read performance.",
+        "weight": 1,
+        "keywords": ["denormalization", "read optimization", "warehouse"]
+      }
+    ]
+  },
+  "tcp_vs_udp": {
+    "difficulty": "medium",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "TCP is connection-oriented and reliable, while UDP is connectionless and best-effort.",
+        "weight": 2,
+        "keywords": ["tcp", "udp", "connection-oriented", "connectionless"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "TCP uses handshakes, sequence numbers, acknowledgments, and retransmissions; UDP sends datagrams without reliability mechanisms.",
+        "weight": 3,
+        "keywords": ["three-way handshake", "ack", "retransmission", "datagram"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "TCP ensures ordered delivery and flow control, whereas UDP prioritizes low latency and minimal overhead.",
+        "weight": 2,
+        "keywords": ["ordered delivery", "flow control", "low latency"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "TCP is reliable but heavier; UDP is faster but may lose, reorder, or duplicate packets.",
+        "weight": 1,
+        "keywords": ["reliable", "overhead", "packet loss"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Web browsing typically uses TCP, while video calls and gaming often use UDP.",
+        "weight": 1,
+        "keywords": ["http", "video streaming", "gaming"]
+      }
+    ]
+  },
+  "neural_networks": {
+    "difficulty": "hard",
+    "concepts": [
+      {
+        "name": "core definition",
+        "layer": "definition",
+        "description": "A neural network is a layered function approximator that learns patterns from data using weighted connections.",
+        "weight": 2,
+        "keywords": ["neurons", "layers", "weights", "function approximation"]
+      },
+      {
+        "name": "key components",
+        "layer": "components",
+        "description": "Main components are input layer, hidden layers, output layer, activation functions, and loss function.",
+        "weight": 3,
+        "keywords": ["input layer", "hidden layer", "activation", "loss"]
+      },
+      {
+        "name": "working mechanism",
+        "layer": "mechanism",
+        "description": "Training uses forward pass, loss computation, backpropagation, and gradient descent updates.",
+        "weight": 2,
+        "keywords": ["forward pass", "backpropagation", "gradient descent"]
+      },
+      {
+        "name": "advantages disadvantages",
+        "layer": "tradeoffs",
+        "description": "Neural networks capture complex relationships but need large data, compute resources, and careful regularization.",
+        "weight": 1,
+        "keywords": ["high capacity", "compute intensive", "regularization"]
+      },
+      {
+        "name": "edge cases examples",
+        "layer": "examples",
+        "description": "Overfitting can occur on small datasets; dropout and early stopping are common mitigations.",
+        "weight": 1,
+        "keywords": ["overfitting", "dropout", "early stopping"]
+      }
+    ]
+  }
+}

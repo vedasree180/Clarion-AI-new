@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  /* Refined Obsidian & Sapphire Palette */
+  --color-background: #08080a;
+  --color-surface: #111114;
+  --color-surface-dim: #18181b;
+  
+  /* Accent: Sunset Orange (Modern & Balanced) */
+  --color-primary: #ff6b2b;
+  --color-primary-rgb: 255, 107, 43;
+  --color-primary-glow: rgba(255, 107, 43, 0.15);
+  
+  /* Secondary: Sapphire Blue */
+  --color-secondary: #3b82f6;
+  --color-secondary-glow: rgba(59, 130, 246, 0.15);
+  
+  /* Text & Contrast */
+  --color-on-background: #ffffff;
+  --color-on-surface: #f1f1f3;
+  --color-on-surface-subtle: #71717a;
+  --color-outline: rgba(255, 255, 255, 0.04);
+  
+  /* Semantic Status */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Typography */
+  --font-h1: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-body: var(--font-inter);
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --font-h1: var(--font-h1);
+  --font-body: var(--font-body);
+}
+
+@layer utilities {
+  .glass-card {
+    background: linear-gradient(145deg, rgba(20, 20, 23, 0.9) 0%, rgba(10, 10, 12, 0.95) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 107, 43, 0.2);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+  }
+
+  .primary-glow {
+    box-shadow: 0 0 40px -10px var(--color-primary-glow);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px var(--color-primary-glow);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  background: #08080a; /* Fallback */
+}
+
+body {
+  background-image: 
+    radial-gradient(circle at 50% -20%, #1e1e26 0%, transparent 100%),
+    radial-gradient(circle at 50% 50%, transparent 0%, #050507 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-blend-mode: normal, normal, overlay;
+  background-size: cover, cover, 150px 150px;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-h1);
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.orange-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   MOBILE & PWA RESPONSIVE ADDITIONS
+   ============================================ */
+
+/* Safe area support for notched phones */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Slide up animation for PWA install prompt */
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Touch action optimization */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Mobile scroll improvements */
+@media (max-width: 1024px) {
+  .custom-scrollbar {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav a, button {
+    min-height: 48px;
+  }
+
+  h1 { font-size: clamp(2rem, 6vw, 3rem); }
+  h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); }
+  h3 { font-size: clamp(1.25rem, 4vw, 1.75rem); }
+}
+
+/* Smooth scrolling everywhere */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}

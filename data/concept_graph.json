@@ -1,0 +1,130 @@
+{
+    "React": {
+        "concepts": {
+            "Hooks": {
+                "requires": [
+                    "State",
+                    "Functional Components"
+                ],
+                "advanced": [
+                    "Custom Hooks",
+                    "Memoization",
+                    "Cleanup Functions"
+                ],
+                "common_mistakes": [
+                    "Hooks in loops",
+                    "Hooks in conditionals"
+                ],
+                "opposites": [
+                    "Class Components Lifecycle"
+                ]
+            },
+            "Virtual DOM": {
+                "requires": [
+                    "DOM",
+                    "Reconciliation"
+                ],
+                "advanced": [
+                    "Fiber Architecture",
+                    "Diffing Algorithm"
+                ],
+                "common_mistakes": [
+                    "Direct DOM manipulation"
+                ],
+                "opposites": [
+                    "Real DOM updates"
+                ]
+            },
+            "State": {
+                "requires": [
+                    "Data Flow"
+                ],
+                "advanced": [
+                    "Context API",
+                    "State Management Libraries"
+                ],
+                "common_mistakes": [
+                    "Mutating state directly"
+                ],
+                "opposites": [
+                    "Props (immutable)"
+                ]
+            }
+        }
+    },
+    "DSA": {
+        "concepts": {
+            "Time Complexity": {
+                "requires": [
+                    "Algorithms",
+                    "Operations Count"
+                ],
+                "advanced": [
+                    "Amortized Analysis",
+                    "Space-Time Tradeoff"
+                ],
+                "common_mistakes": [
+                    "Ignoring nested loops",
+                    "Confusing O(n) with O(log n)"
+                ],
+                "opposites": [
+                    "Constant Time O(1)"
+                ]
+            },
+            "Recursion": {
+                "requires": [
+                    "Stack Frame",
+                    "Base Case"
+                ],
+                "advanced": [
+                    "Tail Call Optimization",
+                    "Dynamic Programming"
+                ],
+                "common_mistakes": [
+                    "Infinite recursion",
+                    "Missing base case"
+                ],
+                "opposites": [
+                    "Iteration"
+                ]
+            }
+        }
+    },
+    "System Design": {
+        "concepts": {
+            "Load Balancing": {
+                "requires": [
+                    "Servers",
+                    "Traffic Management"
+                ],
+                "advanced": [
+                    "Sticky Sessions",
+                    "Weighted Round Robin"
+                ],
+                "common_mistakes": [
+                    "Single point of failure"
+                ],
+                "opposites": [
+                    "Single Server"
+                ]
+            },
+            "Caching": {
+                "requires": [
+                    "Latency",
+                    "Storage"
+                ],
+                "advanced": [
+                    "Cache Eviction Policies",
+                    "Write-through/Write-back"
+                ],
+                "common_mistakes": [
+                    "Cache stampede",
+                    "Stale data"
+                ],
+                "opposites": [
+                    "Database Disk Read"
+                ]
+            }
+        }
+    }
+}
