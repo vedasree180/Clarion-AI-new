@@ -49,7 +49,7 @@ import toast from "react-hot-toast";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export default function InsightsPage() {
-  const { user, isDemoMode, backendStatus } = useAuth();
+  const { user } = useAuth();
   const [analytics, setAnalytics] = useState(null);
   const [gamification, setGamification] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -75,39 +75,8 @@ export default function InsightsPage() {
     fetchData();
   }, [user]);
 
-  const demoAnalytics = {
-    scores_over_time: [
-      { name: "04-21", score: 45, target: 80 },
-      { name: "04-22", score: 58, target: 80 },
-      { name: "04-23", score: 65, target: 80 },
-      { name: "04-24", score: 72, target: 80 },
-      { name: "04-25", score: 78, target: 80 },
-      { name: "04-26", score: 88, target: 80 },
-      { name: "04-27", score: 95, target: 80 }
-    ],
-    topic_performance: [
-      { topic: "Backtracking", average_score: 78.2 },
-      { topic: "Cloud Computing", average_score: 62.9 },
-      { topic: "Binary Search", average_score: 53.2 }
-    ],
-    concepts: [
-      { name: "Key Components", difficulty: "Intermediate", status: "Understood", score: 85 },
-      { name: "Edge Cases", difficulty: "Advanced", status: "In Progress", score: 42 },
-      { name: "Mechanism", difficulty: "Intermediate", status: "Understood", score: 78 },
-      { name: "Time Complexity", difficulty: "Advanced", status: "In Progress", score: 55 },
-      { name: "Memory Management", difficulty: "Intermediate", status: "Understood", score: 92 }
-    ],
-    yearly_activity: {},
-    total_concepts: 42,
-    active_lessons: 12,
-    mastery_percentage: 67.4
-  };
-
-  // Robust fallback logic: If real data is empty/zero, use demo data to keep UI alive
-  const isDemo = isDemoMode || backendStatus === "demo";
-  
-  const displayAnalytics = isDemo ? demoAnalytics : analytics;
-  const displayLoading = isDemoMode || backendStatus === "demo" ? false : (loading && !analytics);
+  const displayAnalytics = analytics || {};
+  const displayLoading = loading && !analytics;
 
   if (displayLoading) {
     return (

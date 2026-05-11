@@ -21,7 +21,7 @@ import toast from "react-hot-toast";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export default function HistoryPage() {
-  const { user, isDemoMode, backendStatus } = useAuth();
+  const { user } = useAuth();
   const [attempts, setAttempts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -44,16 +44,7 @@ export default function HistoryPage() {
     fetchHistory();
   }, [user]);
 
-  const demoAttempts = [
-    { id: "demo1", topic: "0/1 Knapsack Problem", score: 80, timestamp: new Date(Date.now() - 3600000).toISOString() },
-    { id: "demo2", topic: "Backtracking", score: 75, timestamp: new Date(Date.now() - 86400000).toISOString() },
-    { id: "demo3", topic: "Cloud Computing", score: 63, timestamp: new Date(Date.now() - 172800000).toISOString() },
-    { id: "demo4", topic: "Quantum Entropy", score: 92, timestamp: new Date(Date.now() - 432000000).toISOString() },
-    { id: "demo5", topic: "Binary Search", score: 88, timestamp: new Date(Date.now() - 604800000).toISOString() },
-  ];
-
-  const isDemo = isDemoMode || backendStatus === "demo";
-  const displayAttempts = isDemo ? demoAttempts : attempts;
+  const displayAttempts = attempts || [];
   const filteredAttempts = displayAttempts.filter(a => a.topic.toLowerCase().includes(search.toLowerCase()));
 
   const getRelativeTime = (timestamp) => {
@@ -76,7 +67,7 @@ export default function HistoryPage() {
     });
   };
 
-  if (loading && !isDemo) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-4">
@@ -126,7 +117,7 @@ export default function HistoryPage() {
       <div className="space-y-4">
         {filteredAttempts.map((item, i) => (
           <Link 
-            href={`/analyze/results?id=${item.id || item._id || 'demo'}`} 
+            href={`/analyze/results?id=${item.id || item._id}`}
             key={item.id || i}
             className="group block glass-card p-6 hover:border-primary/20 transition-all relative overflow-hidden"
           >

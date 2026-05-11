@@ -22,18 +22,11 @@ import toast from "react-hot-toast";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 export default function NotificationsPage() {
-  const { user, isDemoMode, backendStatus } = useAuth();
+  const { user } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
-
-  const demoNotifications = [
-    { id: 1, type: "ai_feedback", title: "Cognitive Analysis Ready", time: "2m ago", message: "Your explanation of '0/1 Knapsack Problem' has been analyzed. You showed a 15% improvement in understanding state transitions.", detail: "Based on your recent explanation, your cognitive map has updated. You correctly identified the subproblem overlap, which was a weak point in your previous sessions. Our AI notes that your mental fatigue was low, leading to high-quality technical grounding. Keep up the good work!", read: false },
-    { id: 2, type: "unlock", title: "New Domain Unlocked", time: "5h ago", message: "You've reached 85% mastery in Neural Networks. The 'Advanced Architectures' domain is now available.", detail: "Congratulations! By consistently demonstrating high retention and clarity in the Neural Networks domain, you have unlocked the Advanced Architectures domain. You can now explore Transformers, GANs, and more in the Learning Paths tab.", read: true },
-    { id: 3, type: "system", title: "System Update v3.1", time: "1d ago", message: "We've improved the AI Tutor's cognitive mapping latency by 40%.", detail: "The underlying cognitive processing engine has been upgraded to provide near-instant feedback. You should experience significantly faster responses during your refinement sessions.", read: true },
-    { id: 4, type: "session", title: "Review Recommended", time: "2d ago", message: "Your retention for 'Backtracking' is dipping. A quick 10-minute refresher is recommended.", detail: "Our AI engine has detected a 12% decay in your retention for Backtracking concepts. A focused session today will help solidify your long-term memory.", read: true }
-  ];
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -54,8 +47,8 @@ export default function NotificationsPage() {
     fetchNotifications();
   }, [user]);
 
-  const displayNotifications = (isDemoMode || backendStatus === "demo" || notifications.length === 0) ? demoNotifications : notifications;
-  const displayLoading = (isDemoMode || backendStatus === "demo") ? false : (loading && !notifications);
+  const displayNotifications = notifications || [];
+  const displayLoading = loading && !notifications;
 
   const archiveNotification = async (id) => {
     toast.success("Notification moved to archive.");

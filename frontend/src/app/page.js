@@ -38,7 +38,7 @@ import {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export default function HomePage() {
-  const { user, isDemoMode, backendStatus } = useAuth();
+  const { user } = useAuth();
   const [stats, setStats] = useState(null);
   const [analytics, setAnalytics] = useState(null);
   const [performance, setPerformance] = useState([]);
@@ -84,44 +84,11 @@ export default function HomePage() {
     fetchData();
   }, [user]);
 
-  const demoStats = {
-    total_attempts: 1284,
-    average_score: 82.4,
-    best_score: 98.0,
-    topics_attempted: 42,
-    score_trend: "+4.2%",
-    attempts_trend: "+12.5%",
-    recent_activity: [
-      { id: 1, topic: "Advanced Neural Networks", score: 85, timestamp: new Date(Date.now() - 120000).toISOString() },
-      { id: 2, topic: "Quantum Computing Basics", score: 92, timestamp: new Date(Date.now() - 3600000).toISOString() },
-      { id: 3, topic: "Consistency King Badge", score: 100, timestamp: new Date(Date.now() - 86400000).toISOString() }
-    ]
-  };
-
-  const demoAnalytics = {
-    weakest_concepts: [
-      { concept: "Backpropagation", score: 42 },
-      { concept: "Linear Algebra", score: 58 },
-      { concept: "Vector Calculus", score: 65 },
-      { concept: "Probability Distribution", score: 68 }
-    ]
-  };
-
-  const demoPerformance = [
-    { name: "Day 1", score: 45 },
-    { name: "Day 5", score: 62 },
-    { name: "Day 10", score: 58 },
-    { name: "Day 15", score: 75 },
-    { name: "Day 20", score: 68 },
-    { name: "Day 25", score: 85 },
-    { name: "Day 30", score: 72 },
-  ];
-
-  // Robust fallback logic: If real data is empty/zero, use demo data to keep UI alive
+  // Robust fallback logic
   const displayStats = stats || { average_score: 0, total_analyses: 0, global_rank: "N/A", streak: 0 };
   const displayAnalytics = analytics || [];
   const displayPerformance = performance || { current: 0, target: 100 };
-  const displayLoading = isDemoMode || backendStatus === "demo" ? false : (loading && !stats);
+  const displayLoading = loading && !stats;
 
   if (displayLoading) {
     return (
@@ -279,7 +246,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-10">
              {displayStats?.recent_activity?.slice(0, 3).map((item, i) => (
-                <Link href={`/analyze/results?id=${item.id || item._id || 'demo'}`} key={item.id || i} className="block group">
+                <Link href={`/analyze/results?id=${item.id || item._id}`} key={item.id || i} className="block group">
                   <FeedItem 
                     icon={BrainCircuit} 
                     title={item.topic}
